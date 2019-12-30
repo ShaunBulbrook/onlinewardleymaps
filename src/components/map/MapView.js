@@ -99,8 +99,17 @@ const MapCanvas = createReactClass({
 		return (
 			<React.Fragment>
 				<svg
-					fontFamily='-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"'
-					fontSize='0.85em'
+					fontFamily={
+						`${
+							this.props.mapStyle === 'wardley'
+								? 'Consolas, Lucida Console, monospace, '
+								: this.props.mapStyle === 'handwritten'
+								? '"Gloria Hallelujah", cursive'
+								: ''
+						}` +
+						'-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"'
+					}
+					fontSize="0.85em"
 					className={this.props.mapStyle}
 					id="svgMap"
 					width={this.props.mapDimensions.width + 2 * this.props.mapPadding}
